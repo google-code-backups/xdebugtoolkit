@@ -1,0 +1,23 @@
+digraph G {
+ordering=out;
+rankdir=TB;
+edge [labelfontsize=8];
+node [labelfontsize=8, shape=box];
+
+"cg" [label="xdebug cachegrind files"];
+"trace" [label="xdebug trace files"];
+"tree" [label="internal call tree presentation"];
+"dot" [label="graphviz dot files"];
+"zgrviewer" [label="zgrviewer"];
+"xdot" [label="xdot gui"];
+"other" [label=".svg/.png/.ps/..."];
+
+"cg" -> "tree" [label="parsing"];
+"trace" -> "tree" [label="parsing"];
+"tree" -> "tree" [label="filtering /\naggregating /\nmerging"];
+"tree" -> "dot" [label=""];
+"dot" -> "zgrviewer";
+"dot" -> "xdot" [label="graphviz\nrendering" labeljust="r"];
+"dot" -> "other";
+}
+
